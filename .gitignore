@@ -1,2 +1,8 @@
 node_modules/
 *.log
+
+
+eventType=ObjectEventaction=OBSERVEbizStep=shippingbizTransactionListtype=pobizTransaction=http://transaction.acme.com/po/12345678disposition=in_transitepcList=https://id.gs1.org/01/10614141073464/21/2017epcList=https://id.gs1.org/01/10614141073464/21/2018eventTime=2023-04-18T10:49:44.285ZeventTimeZoneOffset=-06:00ext:test=4readPointhttp://example//readPoint//value=readpointValueid=https://id.gs1.org/414/0614142563462/254/1234
+eventType=ObjectEventaction=OBSERVEbizStep=shippingbizTransactionListtype=pobizTransaction=http://transaction.acme.com/po/12345678disposition=in_transitepcList=https://id.gs1.org/01/10614141073464/21/2017epcList=https://id.gs1.org/01/10614141073464/21/2018eventTime=2023-04-18T10:51:18.914ZeventTimeZoneOffset=-06:00ext:test=4readPointhttp://example//readPoint//value=readpointValueid=https://id.gs1.org/414/0614142563462/254/1234
+
+eventList :  ["EventList","",[["ObjectEvent","",[["@context","https://gs1.github.io/EPCIS/epcis-context.jsonld",[]],["action","OBSERVE",[]],["bizStep","shipping",[]],["bizTransactionList","",[["type","po",[]],["bizTransaction","http://transaction.acme.com/po/12345678",[]]]],["disposition","in_transit",[]],["epcList","urn:epc:id:sgtin:0614141.107346.2017",[]],["epcList","urn:epc:id:sgtin:0614141.107346.2018",[]],["eventID","ni:///sha-256;df7bb3c352fef055578554f09f5e2aa41782150ced7bd0b8af24dd3ccb30ba69?ver=CBV2.0",[]],["eventTime","2023-04-18T10:58:21.267Z",[]],["eventTimeZoneOffset","-06:00",[]],["ext:test","4",[]],["readPoint","",[["http://example//readPoint//value","readpointValue",[]],["id","urn:epc:id:sgln:0614142.56346.1234",[]]]],["type","ObjectEvent",[]]]]]]

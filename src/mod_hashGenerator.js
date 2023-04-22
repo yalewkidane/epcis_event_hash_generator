@@ -83,8 +83,8 @@ function _recurse_through_children_in_order(child_list, child_order) {
     */
     let pre_hash = "";
 
-    console.log("Calculating pre hash for child list --: ", child_list)
-    console.log("With order--: ", child_order)
+    //console.log("Calculating pre hash for child list --: ", child_list)
+    //console.log("With order--: ", child_order)
     //console.log(`Calculating pre hash for child list ${child_list} \nWith order ${child_order}`);
 
     const user_extensions = _gather_user_extensions(child_list);
@@ -135,7 +135,7 @@ function _recurse_through_children_in_order(child_list, child_order) {
         pre_hash = pre_hash + JOIN_BY + user_extensions_prehash;
     }
 
-    console.log(`++++++child list pre hash is ${pre_hash}`);
+    //console.log(`++++++child list pre hash is ${pre_hash}`);
     return pre_hash;
 }
 
@@ -224,12 +224,10 @@ function _try_format_numeric(text) {
 function _generic_child_list_to_prehash_string(children) {
     let list_of_values = [];
 
-    console.log("Parsing remaining elements in: ", children);
+    //console.log("Parsing remaining elements in: ", children);
 
     for (let i = 0; i < children.length; i++) {
         let child = children[i];
-        console.log(Array.isArray(child),"  " ,child.length == 2, "  " ,Array.isArray(child[0]) );
-       
         if (Array.isArray(child) && child.length == 2 && Array.isArray(child[0])) {
             list_of_values.push(_generic_child_list_to_prehash_string(child));
         } else {
@@ -293,9 +291,9 @@ function derive_prehashes_from_events(events, join_by) {
     console.log("Setting JOIN_BY='%s'", join_by)
     JOIN_BY = join_by
 
-    console.info(`#events = ${deepCopy[2].length}`);
+    //console.info(`#events = ${deepCopy[2].length}`);
     for (let i = 0; i < deepCopy[2].length; i++) {
-        console.info(`${i}: ${deepCopy[2][i]}\n`);
+        //console.info(`${i}: ${deepCopy[2][i]}\n`);
     }
 
     const prehash_string_list = [];
@@ -305,8 +303,8 @@ function derive_prehashes_from_events(events, join_by) {
 
             const val1=_recurse_through_children_in_order(event[2], PROP_ORDER)
             const val2=_gather_elements_not_in_order(event[2], PROP_ORDER)
-            console.log("val1 : ", val1);
-            console.log("val2 : ", val2);
+            //console.log("val1 : ", val1);
+            //console.log("val2 : ", val2);
             prehash_string_list.push(`eventType=${event[0]}${JOIN_BY}` +
                 `${val1}${JOIN_BY}` +
                 `${val2}`);
@@ -316,13 +314,16 @@ function derive_prehashes_from_events(events, join_by) {
         }
     }
     // To see/check concatenated value string before hash algorithm is performed:
-    console.log(`prehash_string_list = ${prehash_string_list}`);
+    //console.log(`prehash_string_list = ${prehash_string_list}`);
     return prehash_string_list;
 }
 
 
 
-function calculate_hashes_from_pre_hashes(prehashStringList, hashAlg = 'sha256') {
+function calculate_hashes_from_pre_hashes(prehashStringList, hashAlg) {
+    if(typeof hashAlg =='undefined'){
+        hashAlg = 'sha256'
+    }
     const hashValueList = [];
     prehashStringList.forEach(preHashString => {
         let hashString;
@@ -347,13 +348,32 @@ function calculate_hashes_from_pre_hashes(prehashStringList, hashAlg = 'sha256')
     return hashValueList;
 }
 
-function epcis_hashes_from_events(events, hashalg = "sha256") {
+exports.epcis_hashes_from_events=(events, hashalg)=> {
     //Calculate the list of hashes from the given events list
     //hashing algorithm through the pre hash string using default parameters.
+    if(typeof hashalg =='undefined'){
+        hashalg = "sha256"
+    }
     console.log(typeof JOIN_BY)
     prehash_string_list = derive_prehashes_from_events(events, JOIN_BY)
     return calculate_hashes_from_pre_hashes(prehash_string_list, hashalg)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -457,9 +477,9 @@ function main() {
     }
 
     events= jsonToNode(events);
-    const hashval = epcis_hashes_from_events(events);
+    const hashval = this.epcis_hashes_from_events(events);
     console.log(hashval)
 
 }
 
-main();
+//main();
