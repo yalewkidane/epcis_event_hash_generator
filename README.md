@@ -31,6 +31,12 @@ To generate a hash value for an EPCIS event, follow these steps:
 3. You will get the event has a response
 ![Alt text](doc/Images/response.PNG?raw=true "Title")
 
+## JSON Example
+An example JSON file is provided in the "doc/examples" directory. You can use this file as a reference to understand the required format for the EPCIS event data.
+
+To generate the hash value for this example JSON file, follow the usage instructions mentioned above.
+
+
 ## Contribution
 Contributions to the EPCIS Event Hash Generator are welcome. If you encounter any problems or have ideas for improvements, please feel free to open an issue or submit a pull request on GitHub.
 
