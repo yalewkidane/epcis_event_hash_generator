@@ -5,7 +5,7 @@ const jsonToNode=require("./jsonToNode")
 const hash_generator=require("./mod_hashGenerator")
 // Create an instance of the Express app
 const express_app = express();
-const PORT=8085;
+const PORT=7085;
 express_app.use(express.json());
 // Define a route for the root URL
 express_app.post('/epcis/hash/events', (req, res) => {

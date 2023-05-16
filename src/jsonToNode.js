@@ -188,7 +188,7 @@ exports.event_list_from_epcis_document_json=(json_obj) =>{
   */
 
   
-  json_obj = _bare_string_pre_preocessing(json_obj);
+  //json_obj = _bare_string_pre_preocessing(json_obj);
 
   if (json_obj["@context"] !== undefined) {
     _collect_namespaces_from_jsonld_context(json_obj["@context"]);
