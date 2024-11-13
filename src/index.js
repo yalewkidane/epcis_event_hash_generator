@@ -5,7 +5,7 @@ const jsonToNode=require("./jsonToNode")
 const hash_generator=require("./mod_hashGenerator")
 // Create an instance of the Express app
 const express_app = express();
-const PORT=7085;
+const PORT=process.env.SERVER_PORT || 7085;
 express_app.use(express.json());
 // Define a route for the root URL
 express_app.post('/epcis/hash/events', (req, res) => {
@@ -21,4 +21,4 @@ express_app.get('/', (req, res) => {
 // Start the server and listen on port 3000
 express_app.listen(PORT, () => {
   console.log('EPCIS Hash Generator Micro Server started on port : ', PORT);
-});
+}); 

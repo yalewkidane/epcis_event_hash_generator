@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  epcis-hash-generator:
+    image: yaledoc/epcis_event_hash_generator:0.1
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    environment:
+      - NODE_ENV=production
+      - SERVER_PORT=${SERVER_PORT}
+      - DEFAULT_HASH_ALGORITHM=${DEFAULT_HASH_ALGORITHM}

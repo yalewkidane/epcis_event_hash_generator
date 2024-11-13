@@ -352,7 +352,8 @@ exports.epcis_hashes_from_events=(events, hashalg)=> {
     //Calculate the list of hashes from the given events list
     //hashing algorithm through the pre hash string using default parameters.
     if(typeof hashalg =='undefined'){
-        hashalg = "sha256"
+        //hashalg = "sha256"
+        hashalg=process.env.DEFAULT_HASH_ALGORITHM || 'sha256';
     }
     console.log(typeof JOIN_BY)
     prehash_string_list = derive_prehashes_from_events(events, JOIN_BY)

@@ -1,6 +1,6 @@
 @createdAt = {{$datetime iso8601}}
 ###
-POST http://127.0.0.1:8085/epcis/hash/events
+POST http://127.0.0.1:7085/epcis/hash/events
 hashAlg:sha256
 content-type: application/json
 
@@ -12,7 +12,7 @@ content-type: application/json
     "bizStep": "shipping",
     "disposition": "in_transit",
     "epcList": ["urn:epc:id:sgtin:0614141.107346.2017","urn:epc:id:sgtin:0614141.107346.2018"],
-    "eventTime": "2013-06-08T14:58:56.591Z",
+    "eventTime": "2023-06-08T14:58:56.591Z",
     "eventTimeZoneOffset": "-06:00",
     "readPoint": {"id": "urn:epc:id:sgln:0614142.56346.1234", "http://example//readPoint//value":"readpointValue"},
     "bizTransactionList": [  {"type": "po", "bizTransaction": "http://transaction.acme.com/po/12345678" }],
