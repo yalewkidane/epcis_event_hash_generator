@@ -9,6 +9,12 @@ To set up the development environment, follow these steps:
     docker-compose -f docker-compose-build.yml up --build
     ```
 
+
+3. Use the compiled command to tag and push. make sure to update the version
+    ```sh
+    ./dockerBuildPush.sh 
+    ```
+
 2. Build the Docker image with a specific tag:
     ```sh
     docker build -t yaledoc/epcis_event_hash_generator:0.1 .
