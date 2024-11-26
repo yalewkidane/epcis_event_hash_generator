@@ -1,5 +1,9 @@
 // Import the Express framework
 const express = require('express');
+const cors = require('cors');
+
+
+
 
 const jsonToNode=require("./jsonToNode")
 const hash_generator=require("./mod_hashGenerator")
@@ -7,6 +11,7 @@ const hash_generator=require("./mod_hashGenerator")
 const express_app = express();
 const PORT=process.env.SERVER_PORT || 7085;
 express_app.use(express.json());
+express_app.use(cors());
 // Define a route for the root URL
 express_app.post('/epcis/hash/events', (req, res) => {
   let eventList= jsonToNode.event_list_from_epcis_document_json(req.body);
